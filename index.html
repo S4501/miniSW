@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <meta charset="UTF-8">
+    <title>Mini Splitwise</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+
+<!-- ===== LANDING PAGE ===== -->
+<div id="landingPage" class="page">
+    <h1>Mini Splitwise</h1>
+
+    <div class="card">
+        <h3>Create Room</h3>
+        <input id="newRoomName" placeholder="Room name">
+        <button onclick="createRoom()">Create</button>
+    </div>
+
+    <div class="card">
+        <h3>Enter Room</h3>
+        <div id="roomList"></div>
+    </div>
+</div>
+
+<!-- ===== ROOM PAGE ===== -->
+<div id="roomPage" class="hidden">
+
+    <div class="header">
+        <h2 id="roomTitle">Room</h2>
+        <div class="header-controls">
+            <button onclick="goBack()" class="backBtn">← Back</button>
+            <label class="switch">
+                <input type="checkbox" id="darkModeToggle" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Participants -->
+        <div class="column">
+            <h3>Participants</h3>
+            <div class="input-group">
+                <input id="participantName" placeholder="Add participant">
+                <button onclick="addParticipant()">Add</button>
+            </div>
+            <ul id="participantList"></ul>
+        </div>
+
+        <!-- Expenses -->
+        <div class="column">
+            <h3>Add Expense</h3>
+            <div class="input-group">
+                <select id="payerSelect"></select>
+                <input id="expenseTitle" placeholder="Title">
+                <input type="number" id="expenseAmount" placeholder="Amount">
+            </div>
+
+            <div class="checkbox">
+                <input type="checkbox" id="selectAllParticipants">
+                <label for="selectAllParticipants">Select All</label>
+            </div>
+            <div id="participantCheckboxes" class="checkboxGroup"></div>
+            <button onclick="addExpense()">Add Expense</button>
+            <div class="expense-filter">
+                <button id="show5" class="active">Last 3</button>
+                <button id="show10">Last 5</button>
+                <button id="showAll">All</button>
+            </div>
+            <ul id="expenseList"></ul>
+        </div>
+
+        <!-- Summary -->
+        <div class="column">
+            <h3>Summary</h3>
+            <ul id="summaryList"></ul>
+            <h4>Who owes whom</h4>
+            <table id="debtTable">
+                <thead>
+                    <tr>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button onclick="exportToExcel()">Export to Excel</button>
+        </div>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
